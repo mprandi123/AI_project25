@@ -16,6 +16,7 @@ from sklearn.model_selection import RandomizedSearchCV
 import time
 import logging
 import missingno
+import sys
 
 #############################################
 # PROCEDURES
@@ -26,7 +27,6 @@ def log_and_print(message):
     logging.info(message)
 
 def Pause_Code():
-    import sys
     print()
     print()
     stop = input('Type Y to go ahead, N to stop code: ')
@@ -242,6 +242,11 @@ def directional_accuracy(y_true, y_pred):
 # END PROCEDURES
 #############################################
 
+
+
+
+
+
 #############################################
 # PARAMETERS GRID
 #############################################
@@ -324,7 +329,7 @@ file_handler.setFormatter(formatter)
 logger.addHandler(file_handler)
 
 # Load real data
-filename = '/Users/matteoprandi/Documents/QF UniBo/Advanced Topics in Artificial Intelligence/IP25_DATA_day1/CPO_DATA.xlsx'
+filename = 'AI_project25/IP25_DATA_day1/CPO_DATA.xlsx'
 data = pd.read_excel(filename, header=3, sheet_name='RAW_DATA')
 data.set_index('date', inplace=True)
 
@@ -456,6 +461,11 @@ print()
 print('matrix preparation DONE')
 Pause_Code()
 
+
+
+
+
+
 ##############################
 ############### MODEL TRAINING
 ##############################
@@ -520,9 +530,3 @@ X_pred['yhat_xgb'] = yhat_xgb
 W_rf = X_pred[X_pred['yhat_rf'] == X_pred['yhat_rf'].max()].iloc[:,0:4]
 W_gbr = X_pred[X_pred['yhat_gbr'] == X_pred['yhat_gbr'].max()].iloc[:,0:4]
 W_xgb = X_pred[X_pred['yhat_xgb'] == X_pred['yhat_xgb'].max()].iloc[:,0:4]
-
-
-
-
-
-
